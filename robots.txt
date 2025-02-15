@@ -1,42 +1,83 @@
-# Indique aux robots que toutes les pages peuvent être explorées, sauf restrictions spécifiées
 User-agent: *
 Disallow: /admin/
+Disallow: /cgi-bin/
 Disallow: /tmp/
 Disallow: /private/
+Disallow: /wp-admin/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /search/
+Disallow: /login/
+Disallow: /register/
+Disallow: /backend/
 
-# Bloquer des URL avec paramètres inutiles pour l'indexation
-Disallow: /*?debug=true
-Disallow: /*?preview=true
-
-# Permettre les fichiers nécessaires au bon affichage et fonctionnement
-Allow: /css/
-Allow: /js/
+# Autorise les fichiers essentiels pour le SEO
+Allow: /sitemap.xml
+Allow: /sitemap-images.xml
+Allow: /sitemap-videos.xml
+Allow: /sitemap-news.xml
+Allow: /public/
+Allow: /blog/
 Allow: /images/
+Allow: /videos/
+Allow: /news/
 
-# Référencement des ressources multimédias
-Allow: *.png
-Allow: *.jpg
-Allow: *.webp
-Allow: *.css
-Allow: *.js
-
-# Fournir le chemin du fichier sitemap pour une meilleure indexation
-Sitemap: https://www.clairvoyancemedium.com/sitemap.xml
-
-# Autorisation pour les robots Google et Bing pour maximiser les campagnes publicitaires
+# Autoriser Googlebot à indexer tout sauf les zones interdites
 User-agent: Googlebot
 Allow: /
-User-agent: AdsBot-Google
-Allow: /
+Allow: /searchgpt/
+Allow: /ai-content/
+Allow: /voice-search/
+Allow: /openai/
+Allow: /clairvoyance/
+Allow: /rituels-amour/
+Allow: /voyance-email/
+Allow: /consultations/
+Allow: /tarifs-voyance/
+Allow: /temoignages-clients/
+Disallow: /cgi-bin/
+
+# Spécifique à Bingbot
 User-agent: Bingbot
 Allow: /
+Allow: /images/
+Allow: /videos/
+Disallow: /cgi-bin/
 
-# Bloquer les robots nuisibles ou non désirés
-User-agent: BadBot
-Disallow: /
-User-agent: EvilScraper
-Disallow: /
+# Spécifique aux assistants vocaux et à l'IA (Google Assistant, ChatGPT, Siri, Alexa)
+User-agent: OpenAI
+User-agent: GoogleAssistant
+User-agent: Amazonbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+User-agent: ChatGPTBot
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+Allow: /
+Allow: /ai-content/
+Allow: /voice-search/
+Allow: /clairvoyance/
+Allow: /temoignages-clients/
+Allow: /rituels-amour/
+Allow: /voyance-email/
+Allow: /tarifs-voyance/
+Allow: /news/
+Disallow: /cgi-bin/
 
-# Empêcher l'exploration des fichiers sensibles
-Disallow: /config/
-Disallow: /backup/
+# Sitemap pour une meilleure indexation
+Sitemap: https://clairvoyancemedium.github.io/sitemap.xml
+Sitemap: https://clairvoyancemedium.github.io/sitemap-images.xml
+Sitemap: https://clairvoyancemedium.github.io/sitemap-videos.xml
+Sitemap: https://clairvoyancemedium.github.io/sitemap-news.xml
+
+# Instructions spécifiques aux bots SEO modernes
+User-agent: *
+Crawl-delay: 1
+Request-rate: 1/1s
+
+# Précision des métadonnées pour les moteurs IA et assistants vocaux
+AI-friendly: true
+Voice-search-enabled: true
+SearchGPT: index, follow
+Googlebot: max-snippet:-1, max-image-preview:large, max-video-preview:-1
